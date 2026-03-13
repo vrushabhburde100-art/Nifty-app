@@ -14,7 +14,7 @@ filtered_df = df[df["Stock"] == company]
 st.title("Nifty Dashboard")
 st.dataframe(filtered_df)
 
-fig = px.line(filtered_df, x="Date", y="Close", "color="Stock", hover_data=["Open", "High", "Low", "Close", "Volume"])
+fig = px.line(filtered_df, x="Date", y="Close", color="Stock", hover_data=["Open", "High", "Low", "Close", "Volume"])
 st.plotly_chart(fig)
 
 
