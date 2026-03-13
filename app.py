@@ -4,12 +4,16 @@ import matplotlib.pyplot as plt
 
 # Load dataset
 df = pd.read_excel("Stock_I.xlsx") 
+st.sidebar.header("Filter")
+company = st.sidebar.selectbox("Select Company",df["Stock"].unique())
+filtered_df = df[df["Stock"] == company]
+
 
 # Example: Display the dataframe
 st.title("Nifty Dashboard")
-st.dataframe(df)
+st.dataframe(filtered_df)
 
-# Example: Plot closing prices
-st.line_chart(df['Close'])  
+fig = px.line(filtered_df, x="Date", y="Close")
+st.plotly_chart(fig)
 
 
